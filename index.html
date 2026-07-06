@@ -85,7 +85,18 @@ nav.scrolled .inner{background:rgba(9,12,22,.7);backdrop-filter:blur(18px);borde
 .nav-links a:hover::after{width:100%}
 .nav-cta{padding:10px 20px;font-size:14px}
 .burger{display:none}
-@media(max-width:900px){.nav-links,.nav .nav-cta{display:none}.burger{display:block}}
+@media(max-width:900px){
+  .nav-links,.nav .nav-cta{display:none}
+  .burger{display:block}
+  nav.menu-open .nav-links{
+    display:flex;flex-direction:column;gap:0;position:absolute;top:64px;left:12px;right:12px;
+    background:rgba(9,12,22,.95);backdrop-filter:blur(18px);border:1px solid var(--line);
+    border-radius:16px;padding:10px 20px;box-shadow:0 10px 40px rgba(0,0,0,.4)
+  }
+  nav.menu-open .nav-links a{padding:12px 0;border-bottom:1px solid var(--line)}
+  nav.menu-open .nav-links a:last-child{border-bottom:none}
+  nav.menu-open .nav .nav-cta{display:block;margin:10px 0 0}
+}
 
 /* hero */
 .hero{min-height:100vh;display:flex;align-items:center;padding-top:120px}
@@ -512,6 +523,20 @@ addEventListener('scroll',()=>{
   prog.style.width=(scrollY/h*100)+'%';
   nav.classList.toggle('scrolled',scrollY>40);
 });
+/* burger menu toggle */
+const burgerBtn=document.querySelector('.burger');
+if(burgerBtn){
+  burgerBtn.addEventListener('click',()=>{
+    nav.classList.toggle('menu-open');
+    burgerBtn.textContent=nav.classList.contains('menu-open')?'Close':'Menu';
+  });
+  document.querySelectorAll('.nav-links a').forEach(link=>{
+    link.addEventListener('click',()=>{
+      nav.classList.remove('menu-open');
+      burgerBtn.textContent='Menu';
+    });
+  });
+}
 /* cursor */
 const cur=document.getElementById('cursor'),dot=document.getElementById('cursorDot');
 let cx=0,cy=0,tx=0,ty=0;
