@@ -625,7 +625,7 @@ document.getElementById('faq-list').innerHTML=faqs.map(f=>`<div class="q"><butto
 document.querySelectorAll('.q button').forEach(b=>b.addEventListener('click',()=>{const q=b.parentElement;const open=q.classList.contains('open');document.querySelectorAll('.q').forEach(x=>{x.classList.remove('open');x.querySelector('.a').style.maxHeight=null});if(!open){q.classList.add('open');q.querySelector('.a').style.maxHeight=q.querySelector('.a').scrollHeight+'px'}}));
 
 /* clients marquee */
-const clients=['Google','Microsoft','Amazon','Tesla','Adobe','Salesforce','Meta','Oracle','IBM'];
+
 document.getElementById('mtrack').innerHTML=[...clients,...clients].map(c=>`<span>${c}</span>`).join('');
 
 /* reveal + counters */
