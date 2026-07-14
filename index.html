@@ -374,9 +374,6 @@ footer a{display:block;color:var(--muted);font-size:14px;padding:5px 0;transitio
   </div>
 </div></header>
 
-<!-- CLIENTS -->
-<div class="marquee"><div class="track" id="mtrack"></div></div>
-
 <!-- SERVICES -->
 <section id="services"><div class="wrap">
   <div class="center reveal"><span class="eyebrow">What We Do</span>
@@ -625,8 +622,6 @@ document.getElementById('faq-list').innerHTML=faqs.map(f=>`<div class="q"><butto
 document.querySelectorAll('.q button').forEach(b=>b.addEventListener('click',()=>{const q=b.parentElement;const open=q.classList.contains('open');document.querySelectorAll('.q').forEach(x=>{x.classList.remove('open');x.querySelector('.a').style.maxHeight=null});if(!open){q.classList.add('open');q.querySelector('.a').style.maxHeight=q.querySelector('.a').scrollHeight+'px'}}));
 
 /* clients marquee */
-
-document.getElementById('mtrack').innerHTML=[...clients,...clients].map(c=>`<span>${c}</span>`).join('');
 
 /* reveal + counters */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');
